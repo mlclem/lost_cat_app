@@ -4,11 +4,35 @@
   <% if all_cats.empty? %>
     There are no lost cats. Good job!
   <% else %>
-    <% all_cats.each do |cat|%>
+    <% all_cats.each_with_index do |cat, index|%>
       <article>
         <h2><%= cat.name %></h2>
         <h4><%= cat.phone %></h2>
         <p><%= cat.description %></p>
+          
+          <!-- Edit cat button -->
+        <div>
+        <form action="/lostcats/<%= index %>\edit" method="PATCH">
+          <input type="submit" id="update <%= index %>" value="Edit cat details">
+        </form>
+        </div>
+
+        <!--
+        <div>
+        <form action="/lostcats/<%= index %>\edit" method="PATCH">
+          <input type="hidden" name="_method" value="UPDATE">
+          <input type="submit" id="update <%= index %>" value="Edit cat details">
+        </form>
+        </div>
+        -->
+
+        <!-- Delete / UPDATE button -->
+        <div>
+        <form action="/lostcats/<%= index %>" method="POST">
+          <input type="hidden" name="_method" value="DELETE">
+          <input type="submit" id="delete <%= index %>" value="Mark cat as found">
+        </form>
+        </div>
       </article>
     <% end %>
   <% end %>

@@ -45,6 +45,14 @@ class WebApplicationServer < Sinatra::Base
     redirect '/lostcats'
   end
 
+  get '/lostcats/:index/edit' do
+  end
+
+  delete '/lostcats/:index' do
+    notice_board.remove(params[:index].to_i)
+    redirect '/lostcats'
+  end
+
   def notice_board
     $global[:notice_board] ||= NoticeBoard.new
   end

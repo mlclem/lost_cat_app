@@ -23,4 +23,19 @@ RSpec.describe NoticeBoard do
       persian
     ]
   end
+
+  it "removes specified Cat instance from the notice board" do
+    delete_board = NoticeBoard.new
+    thunder = Cat.new("Larry", "079454 355 467", "A small ginger cat with a judging glare")
+    lightning = Cat.new("Doris", "071246 384 472", "A young stripey cat with knack for breaking things")
+    rain = Cat.new("Prince", "01468 147 465", "A very fluffy cat, good at getting stuck in small spaces")
+    delete_board.add(thunder)
+    delete_board.add(lightning)
+    delete_board.add(rain)
+    delete_board.remove(0)
+    expect(delete_board.report).to eq [
+      lightning,
+      rain
+    ]
+  end
 end
