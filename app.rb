@@ -27,6 +27,14 @@ class WebApplicationServer < Sinatra::Base
 
   # YOUR CODE GOES BELOW THIS LINE
 
+  get '/lostcats' do
+    erb :lostcats_index
+  end
+
+  get '/lostcats/new' do
+    erb :lostcats_new
+  end
+
   # ...
 
   # This is an example of setting up a new instance using the global data store.
