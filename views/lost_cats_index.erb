@@ -12,23 +12,26 @@
           
           <!-- Edit cat button -->
         <div>
-        <form action="/lostcats/<%= index %>/edit">
-          <input type="submit" id="update <%= index %>" value="Edit cat details">
-        </form>
+          <form action="/lostcats/<%= index %>/edit">
+            <input type="submit" id="update <%= index %>" value="Edit cat details">
+          </form>
         </div>
 
         <!-- Delete / UPDATE button -->
         <div>
-        <form action="/lostcats/<%= index %>" method="POST">
-          <input type="hidden" name="_method" value="DELETE">
-          <input type="submit" id="delete <%= index %>" value="Mark cat as found">
-        </form>
+          <form action="/lostcats/<%= index %>" method="POST">
+            <input type="hidden" name="_method" value="DELETE">
+            <input type="submit" id="delete <%= index %>" value="Mark cat as found">
+          </form>
         </div>
       </article>
     <% end %>
   <% end %>
 </div>
 
+<!-- Add cat button -->
 <div>
-  <a href="/lostcats/new">Add a cat</a>
+  <form action="/lostcats/new">
+    <input type="submit" id="add cat" value="Add a cat">
+  </form>
 </div>

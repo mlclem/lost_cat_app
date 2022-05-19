@@ -9,7 +9,7 @@ RSpec.describe NoticeBoard do
     expect(board.report).to eq [tabby]
   end
 
-  it "Multiple cat istances can be added to the notice board" do
+  it "Multiple Cat istances can be added to the notice board" do
     neue_board = NoticeBoard.new
     ginger = Cat.new("Larry", "079454 355 467", "A small ginger cat with a judging glare")
     bengal = Cat.new("Doris", "071246 384 472", "A young stripey cat with knack for breaking things")
@@ -39,7 +39,7 @@ RSpec.describe NoticeBoard do
     ]
   end
 
-  it "Returns a single entry specified by index" do
+  it "Returns a single Cat instance specified by index" do
     get_board = NoticeBoard.new
     thunder = Cat.new("Larry", "079454 355 467", "A small ginger cat with a judging glare")
     lightning = Cat.new("Doris", "071246 384 472", "A young stripey cat with knack for breaking things")
@@ -48,5 +48,19 @@ RSpec.describe NoticeBoard do
     get_board.add(lightning)
     get_board.add(rain)
     expect(get_board.get(0)).to eq thunder
+  end
+
+  it "Updates a single Cat instance specified by index" do
+    up_board = NoticeBoard.new
+    smol_cat = Cat.new("Tiny", "00001 111 111", "An impossibly small kitten")
+    big_cat = Cat.new("General chonkington", "08999 978 878", "The general needs some exercise")
+    up_board.add(smol_cat)
+    up_board.add(big_cat)
+    slim_cat = Cat.new("General slim", "0123 123 432", "The general has cut out the treats")
+    up_board.update(1,slim_cat)
+    expect(up_board.report).to eq [
+      smol_cat,
+      slim_cat
+    ]
   end
 end

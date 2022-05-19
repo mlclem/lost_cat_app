@@ -52,6 +52,12 @@ class WebApplicationServer < Sinatra::Base
     }
   end
 
+  patch '/lostcats/:index' do
+    new_cat = Cat.new(params[:name], params[:phone], params[:description])
+    notice_board.update(params[:index].to_i,new_cat)
+    redirect '/lostcats'
+  end
+
   delete '/lostcats/:index' do
     notice_board.remove(params[:index].to_i)
     redirect '/lostcats'
