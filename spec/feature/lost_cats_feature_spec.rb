@@ -138,17 +138,57 @@ RSpec.describe "Lost cats feature tests", type: :feature do
 
   context "If a user submits the correct password" do
     it "they can edit a cat on the notice board" do
+      visit '/lostcats'
+      click_button "add cat"
+      fill_in "name", with: "LolCat"
+      fill_in "phone", with: "707707 707 077"
+      fill_in "description", with: "A most dubious cat"
+      click_button "Submit"
+      click_button "update 0"
+      fill_in "passwd_in", with: "p1a2s3s3w4o5r6d7"
+      fill_in "name", with: "Tigger"
+      fill_in "phone", with: "0800 808 303"
+      fill_in "description", with: "A very springy cat"
+      fill_in "passwd", with: "Password1"
+      click_button "Save"
+      expect(page).to have_content "Tigger"
+      expect(page).to have_content "0800 808 303"
+      expect(page).to have_content "A very springy cat"
+      expect(page).not_to have_content "LolCat"
+      expect(page).not_to have_content "707707 707 077"
+      expect(page).not_to have_content "A most dubious cat"
     end
   
     it "they can delete a cat from the notice board" do
+      visit '/lostcats'
+      click_button "add cat"
+      fill_in "name", with: "LolCat"
+      fill_in "phone", with: "707707 707 077"
+      fill_in "description", with: "A dubious cat"
+      click_button "Submit"
+      click_button "update 0"
     end
   end
 
   context "if a user submits an incorrect password" do
     it "they cannot edit a cat on the notice board" do
+      visit '/lostcats'
+      click_button "add cat"
+      fill_in "name", with: "LolCat"
+      fill_in "phone", with: "707707 707 077"
+      fill_in "description", with: "A dubious cat"
+      click_button "Submit"
+      click_button "update 0"
     end
 
     it "they cannot delete a cat from the notice board" do
+      visit '/lostcats'
+      click_button "add cat"
+      fill_in "name", with: "LolCat"
+      fill_in "phone", with: "707707 707 077"
+      fill_in "description", with: "A dubious cat"
+      click_button "Submit"
+      click_button "update 0"
     end
   end
 end
