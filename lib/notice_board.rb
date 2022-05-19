@@ -13,6 +13,11 @@ class NoticeBoard
     @board_array << cat
   end
 
+  # Read - get single instance#
+  def get(index)
+    return @board_array[index]
+  end
+
   # Delete - Remove Cat instance at index
   def remove(index)
     @board_array.delete_at(index)

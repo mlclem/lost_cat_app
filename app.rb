@@ -46,6 +46,10 @@ class WebApplicationServer < Sinatra::Base
   end
 
   get '/lostcats/:index/edit' do
+    erb :lost_cats_edit, locals: {
+      index: params[:index].to_i,
+      cat: notice_board.get(params[:index].to_i)
+    }
   end
 
   delete '/lostcats/:index' do

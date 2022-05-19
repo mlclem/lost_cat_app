@@ -12,19 +12,10 @@
           
           <!-- Edit cat button -->
         <div>
-        <form action="/lostcats/<%= index %>\edit" method="PATCH">
+        <form action="/lostcats/<%= index %>/edit">
           <input type="submit" id="update <%= index %>" value="Edit cat details">
         </form>
         </div>
-
-        <!--
-        <div>
-        <form action="/lostcats/<%= index %>\edit" method="PATCH">
-          <input type="hidden" name="_method" value="UPDATE">
-          <input type="submit" id="update <%= index %>" value="Edit cat details">
-        </form>
-        </div>
-        -->
 
         <!-- Delete / UPDATE button -->
         <div>
