@@ -28,11 +28,20 @@ class WebApplicationServer < Sinatra::Base
   # YOUR CODE GOES BELOW THIS LINE
 
   get '/lostcats' do
-    erb :lostcats_index
+    erb :lost_cats_index
   end
 
   get '/lostcats/new' do
-    erb :lostcats_new
+    erb :lost_cats_new
+  end
+
+  post 'lostcats' do
+    cat = Cat.new(params[:name], params[:phone], params[:description])
+    notice_board.add(cat)
+  end
+
+  def your_data_model
+    $global[:notice_board] ||= NoticeBoard.new
   end
 
   # ...

@@ -71,7 +71,7 @@ class NoticeBoard
 end
 
 class Cat
-  def initialize(name, phone, description )
+  def initialize(name, phone, description, passwd )
     # name is a string
     # phone is a string
     # description is a string
@@ -87,6 +87,10 @@ class Cat
 
   def description
     # Returns the description
+  end
+
+  def passwd
+    # Returns password
   end
 end
 ```
