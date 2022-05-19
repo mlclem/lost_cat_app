@@ -2,7 +2,31 @@
 
 ## 1. Describe the Problem
 
-_Put or write the user stories here. Add any clarifying notes you might have._
+> As a user
+* So that I can find my cat that I lost
+* I want to post an advert for a lost cat with some description of the cat, and my telephone number so people can contact me
+* Create / POST
+
+> As a user
+* So that I can help others find their lost cats
+* I want to see all of the lost cat adverts
+* Read / GET
+
+> As a user
+* So that I can update lost cat adverts with potential sightings
+* I want to update adverts
+* Update / PATCH
+
+
+> As a user
+* So that I can focus on the yet not-found cats
+* I want to delete adverts for cats that have been found
+* Delete / Delete
+
+> As a user
+* So that I can protect my cat adverts from weird people
+* I want to give a password with each advert, and only people who give the right password can update or delete that advert
+* Checks passwd field matches the one CREATED in POST action 
 
 ## 2. Design the Interface
 
@@ -10,7 +34,7 @@ _This is the fun part! Use excalidraw.com or a similar tool to design some
 wireframes (rough sketches of the user interface). Include interactions and
 transitions between pages — those are the most critical part._
 
-![Diary design example](./diary_design.png)
+![Diary design example](./lost-cat-design.png)
 
 ## 3. Design the Data Model Classes
 
@@ -20,24 +44,24 @@ _Include the initializer and public methods with all parameters and return value
 ```ruby
 # EXAMPLE
 
-class Diary
+class NoticeBoard
   def initialize
   end
 
-  def entries
-    # Returns a list of instances of DiaryEntries
+  def report
+    # Returns a list of all Cat instances
   end
 
-  def add(entry) # entry is a DiaryEntry
+  def add(cat) # cat is an instance of Cat
     # No return value
   end
 
   def get(index) # index is a number
-    # Returns an entry, the entry at the given index
+    # Returns an a specific Cat instance at the given index
   def
 
-  def update(index, new_entry) # index is a number, new_entry is a DiaryEntry
-    # Updates the entry at index to be the new_entry
+  def update(index, updated_cat) # index is a number, udapted_cat is an existing Cat instance
+    # Updates the entry at index to be the updated_cat
     # No return value
   end
 
@@ -46,18 +70,23 @@ class Diary
   end
 end
 
-class DiaryEntry
-  def initialize(title, contents)
-    # title is a string
-    # contents is a string
+class Cat
+  def initialize(name, phone, description )
+    # name is a string
+    # phone is a string
+    # description is a string
   end
 
-  def title
+  def name
     # Returns the title
   end
 
-  def contents
-    # Returns the contents
+  def phone
+    # returns the phone number
+  end
+
+  def description
+    # Returns the description
   end
 end
 ```
