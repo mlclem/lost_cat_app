@@ -135,28 +135,28 @@ _Map them to the methods or code snippets in your data model._
 # EXAMPLE
 
 # INDEX
-# Request: GET /diary
-diary.entries
+# Request: GET /lostcats
+board.report
 
 # CREATE
-# POST /diary
-# With data: { title: "Hello", contents: "A good diary" }
-entry = DiaryEntry.new(title, contents)
-diary.add(entry)
+# POST /lostcats
+# With data: { name: "kitty" phone: "01243 234 853" description: "Smol kitteh" }
+kitty = Cat.new(name, phone, description)
+board.add(kitty)
 
 # READ
-# GET /diary/:index
-diary.get(index)
+# GET /lostcats/:index
+board.get(index)
 
 # UPDATE
-# PATCH /diary/:index
-# With data: { title: "Hello", contents: "A good diary" }
-entry = DiaryEntry.new(title, contents)
-diary.update(index, entry)
+# PATCH /lostcats/:index
+# With data: { name: "Catter" phone: "054987 234 853" description: "Massive kitteh" }
+catter = Cat.new(name, phone, description)
+board.update(index, kitty)
 
 # DELETE
-# DELETE /diary/:index
-diary.remove(index)
+# DELETE /lostcats/:index
+board.remove(index)
 ```
 
 > Remember:
@@ -174,29 +174,35 @@ _Create examples of user interactions and expectations._
 # code here, but at the start it's OK if it's just English or made up code.
 
 # View no entries
-visit "/diary"
+visit "/lostcats"
 # User sees: You have no diary entries.
 
 # Add an entry
-visit "/diary"
-click link "Add Entry"
-enter "A beautiful day" into "Title" field
-enter "I had a very nice day it's true." into "Contents" field
-click button "Post"
+visit "/lostcats"
+click link "Add cat"
+enter "kitty" into "Name" field
+enter "01243 234 853" into "Phone" field
+enter "Smol kitteh" into "Description" field
+click button "Submit"
 # User sees in the diary list:
-# A beautiful day
-# I had a very nice day it's true.
+# Kitty
+# 01243 234 853
+# Smol kitteh
 
 # Multiple entries
-visit "/diary"
-click link "Add Entry"
-enter "A beautiful day" into "Title" field
-enter "I had a very nice day it's true." into "Contents" field
-click button "Post"
-click link "Add Entry"
-enter "A bad day" into "Title" field
-enter "I had a very bad day." into "Contents" field
-click button "Post"
+visit "/lostcats"
+visit "/lostcats"
+click link "Add cat"
+enter "kitty" into "Name" field
+enter "01243 234 853" into "Phone" field
+enter "Smol kitteh" into "Description" field
+click button "Submit"
+visit "/lostcats"
+click link "Add cat"
+enter "catter" into "Name" field
+enter "03214 984 684" into "Phone" field
+enter "Massive kitteh" into "Description" field
+click button "Submit"
 # User sees in the diary list:
 # A bad day
 # I had a very bad day.
