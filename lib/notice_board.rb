@@ -22,7 +22,7 @@ class NoticeBoard
   def update(index, new_cat)
     @board_array[index] = new_cat
   end
-  
+
   # Delete - Remove Cat instance at index
   def remove(index)
     @board_array.delete_at(index)

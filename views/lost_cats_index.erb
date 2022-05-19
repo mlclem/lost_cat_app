@@ -6,14 +6,14 @@
   <% else %>
     <% all_cats.each_with_index do |cat, index|%>
       <article>
-        <h2><%= cat.name %></h2>
-        <h4><%= cat.phone %></h2>
-        <p><%= cat.description %></p>
+        <h2><%= h cat.name %></h2>
+        <h4>Phone number:<br><%= h cat.phone %></h2>
+        <p>Description:<br><%= h cat.description %></p>
           
           <!-- Edit cat button -->
         <div>
           <form action="/lostcats/<%= index %>/edit">
-            <input type="submit" id="update <%= index %>" value="Edit cat details">
+            <button id="update <%= index %>">Edit cat details</button>
           </form>
         </div>
 
@@ -21,7 +21,7 @@
         <div>
           <form action="/lostcats/<%= index %>" method="POST">
             <input type="hidden" name="_method" value="DELETE">
-            <input type="submit" id="delete <%= index %>" value="Mark cat as found">
+            <button id="delete <%= index %>">Mark cat as found</button>
           </form>
         </div>
       </article>
@@ -32,6 +32,6 @@
 <!-- Add cat button -->
 <div>
   <form action="/lostcats/new">
-    <input type="submit" id="add cat" value="Add a cat">
+    <button id="add cat">Add a cat</button>
   </form>
 </div>

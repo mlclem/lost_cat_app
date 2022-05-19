@@ -1,8 +1,9 @@
 class Cat
-  def initialize(name, phone, description)
+  def initialize(name, phone, description, passwd)
     @name = name
     @phone = phone
     @description = description
+    @passwd = passwd
   end
 
   def name
@@ -15,5 +16,9 @@ class Cat
 
   def description
     return @description
+  end
+
+  def passwd
+    return @passwd
   end
 end

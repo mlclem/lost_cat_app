@@ -29,6 +29,18 @@ class WebApplicationServer < Sinatra::Base
 
   # YOUR CODE GOES BELOW THIS LINE
 
+  # Helpers to sanitize user input
+  helpers do
+    def h(text)
+      Rack::Utils.escape_html(text)
+    end
+  
+    def hattr(text)
+      Rack::Utils.escape_path(text)
+    end
+  end
+  
+
   get '/lostcats' do
     erb :lost_cats_index, locals: {
       all_cats: notice_board.report
@@ -40,7 +52,7 @@ class WebApplicationServer < Sinatra::Base
   end
 
   post '/lostcats' do
-    cat = Cat.new(params[:name], params[:phone], params[:description])
+    cat = Cat.new(params[:name], params[:phone], params[:description], params[:passwd])
     notice_board.add(cat)
     redirect '/lostcats'
   end
@@ -53,8 +65,8 @@ class WebApplicationServer < Sinatra::Base
   end
 
   patch '/lostcats/:index' do
-    new_cat = Cat.new(params[:name], params[:phone], params[:description])
-    notice_board.update(params[:index].to_i,new_cat)
+    new_cat = Cat.new(params[:name], params[:phone], params[:description], params[:passwd])
+    notice_board.update(params[:index].to_i, new_cat)
     redirect '/lostcats'
   end
 

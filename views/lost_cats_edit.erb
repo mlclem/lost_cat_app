@@ -1,36 +1,32 @@
 <h1>Edit cat details</h1>
 
-<form action="/lostcats/:index" method="POST">
+<form action="/lostcats/<%= index %>" method="POST">
 <input type="hidden" name="_method" value="PATCH">
   <div>
     <label form="name">Name</label>
     <br>
-    <input type="text" id ="name" name="name" value="<%= cat.name %>">
+    <input type="text" id ="name" name="name" value="<%= h cat.name %>">
   </div>
 
   <div>
     <label form="phone">Phone number</label>
     <br>
-    <input type="text" id ="phone" name="phone" value="<%= cat.phone %>">
+    <input type="text" id ="phone" name="phone" value="<%= h cat.phone %>">
   </div>
 
   <div>
     <label form="description">Description</label>
     <br>
-    <input type="text" id ="description" name="description" value="<%= cat.description %>">
+    <input type="text" id ="description" name="description" value="<%= h cat.description %>">
+  </div>
+
+      <div>
+    <label form="passwd">password</label>
+    <br>
+    <input type="text" id ="passwd" name="passwd" value="<%= h cat.passwd %>">
   </div>
 
   <div>
     <input type="submit" value="Save">
   </div>
 </form>
-
- 
- <!--
- <div>
- <form action="/lostcats/<%= index %>\edit" method="PATCH">
-   <input type="hidden" name="_method" value="UPDATE">
-   <input type="submit" id="update <%= index %>" value="Edit cat details">
- </form>
- </div>
- -->
