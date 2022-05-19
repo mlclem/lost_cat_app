@@ -5,6 +5,8 @@ require 'sinatra/reloader'
 
 # You will want to require your data model class here
 require "animal_list"
+require 'notice_board'
+require 'cat'
 
 class WebApplicationServer < Sinatra::Base
   # This line allows us to send HTTP Verbs like `DELETE` using forms
@@ -28,19 +30,22 @@ class WebApplicationServer < Sinatra::Base
   # YOUR CODE GOES BELOW THIS LINE
 
   get '/lostcats' do
-    erb :lost_cats_index
+    erb :lost_cats_index, locals: {
+      all_cats: notice_board.report
+    }
   end
 
   get '/lostcats/new' do
     erb :lost_cats_new
   end
 
-  post 'lostcats' do
+  post '/lostcats' do
     cat = Cat.new(params[:name], params[:phone], params[:description])
     notice_board.add(cat)
+    redirect '/lostcats'
   end
 
-  def your_data_model
+  def notice_board
     $global[:notice_board] ||= NoticeBoard.new
   end
 

@@ -1,5 +1,19 @@
-<h1>Lost Cats</h1>
+<h1>Lost Cats Noticeboard</h1>
 
-There are no lost cats. Good job!
+<div>
+  <% if all_cats.empty? %>
+    There are no lost cats. Good job!
+  <% else %>
+    <% all_cats.each do |cat|%>
+      <article>
+        <h2><%= cat.name %></h2>
+        <h3><%= cat.phone %></h2>
+        <p><%= cat.description %></p>
+      </article>
+    <% end %>
+  <% end %>
+</div>
 
-<a href="/lostcats/new">Add a cat</a>
+<div>
+  <a href="/lostcats/new">Add a cat</a>
+</div>

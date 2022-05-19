@@ -10,5 +10,4 @@ class NoticeBoard
   def add(cat)
     @board_array << cat
   end
-
 end
